@@ -1,0 +1,12 @@
+<resources>
+    <!-- Compose draws the whole UI; this theme only styles the window while the app starts. -->
+    <style name="Theme.CherryCharm" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#B5274E</item>
+        <item name="colorPrimaryVariant">#7D0D30</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#C9A227</item>
+        <item name="colorSecondaryVariant">#8C6E12</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="android:windowBackground">#9E1F43</item>
+    </style>
+</resources>

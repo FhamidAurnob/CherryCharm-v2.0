@@ -1,0 +1,56 @@
+<!-- CherryCharm: cream handbag with a cherry charm. Scaled into the 66dp adaptive-icon safe zone. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group android:scaleX="0.8" android:scaleY="0.8" android:translateX="10.4" android:translateY="7.8">
+        <!-- soft shadow -->
+        <path android:fillColor="#3A0012" android:fillAlpha="0.28"
+            android:pathData="M37,47 L73,47 Q76,47 76.5,50 L79.5,80 Q80,85 75,85 L35,85 Q30,85 30.5,80 L33.5,50 Q34,47 37,47 Z" />
+        <!-- handle -->
+        <path android:strokeColor="#FFF1E8" android:strokeWidth="3.6" android:strokeLineCap="round"
+            android:pathData="M43,46 C43,33 65,33 65,46" />
+        <!-- bag body -->
+        <path android:pathData="M36,44 L72,44 Q75,44 75.5,47 L78.5,77 Q79,82 74,82 L34,82 Q29,82 29.5,77 L32.5,47 Q33,44 36,44 Z">
+            <aapt:attr name="android:fillColor">
+                <gradient android:type="linear" android:startX="54" android:startY="44" android:endX="54" android:endY="82">
+                    <item android:offset="0" android:color="#FFFFF8F3" />
+                    <item android:offset="1" android:color="#FFF6DCD3" />
+                </gradient>
+            </aapt:attr>
+        </path>
+        <!-- flap seam -->
+        <path android:strokeColor="#E9C7BC" android:strokeWidth="1.2" android:pathData="M33,52 L75,52" />
+        <!-- gold clasp -->
+        <path android:fillColor="#D4A62A"
+            android:pathData="M51.6,49 h4.8 a1.6,1.6 0 0 1 1.6,1.6 v2.8 a1.6,1.6 0 0 1 -1.6,1.6 h-4.8 a1.6,1.6 0 0 1 -1.6,-1.6 v-2.8 a1.6,1.6 0 0 1 1.6,-1.6 z" />
+        <!-- stems + leaf -->
+        <path android:strokeColor="#3E7D3A" android:strokeWidth="1.6" android:strokeLineCap="round"
+            android:pathData="M54,55 C54,60 52,63 49,66" />
+        <path android:strokeColor="#3E7D3A" android:strokeWidth="1.6" android:strokeLineCap="round"
+            android:pathData="M54,55 C55,61 58,64 61,67" />
+        <path android:fillColor="#5BA34F" android:pathData="M54,56 C57,54 60,55 61.5,57.5 C58.5,58.5 56,58 54,56 Z" />
+        <!-- cherries -->
+        <path android:pathData="M41.8,70 a6.2,6.2 0 1 0 12.4,0 a6.2,6.2 0 1 0 -12.4,0 z">
+            <aapt:attr name="android:fillColor">
+                <gradient android:type="linear" android:startX="41.8" android:startY="63.8" android:endX="54.2" android:endY="76.2">
+                    <item android:offset="0" android:color="#FFFF4D6A" />
+                    <item android:offset="1" android:color="#FFB0123A" />
+                </gradient>
+            </aapt:attr>
+        </path>
+        <path android:pathData="M55.8,71 a6.2,6.2 0 1 0 12.4,0 a6.2,6.2 0 1 0 -12.4,0 z">
+            <aapt:attr name="android:fillColor">
+                <gradient android:type="linear" android:startX="55.8" android:startY="64.8" android:endX="68.2" android:endY="77.2">
+                    <item android:offset="0" android:color="#FFFF4D6A" />
+                    <item android:offset="1" android:color="#FFB0123A" />
+                </gradient>
+            </aapt:attr>
+        </path>
+        <!-- shine -->
+        <path android:fillColor="#FFFFFF" android:fillAlpha="0.75" android:pathData="M44.5,67.8 a1.5,1.5 0 1 0 3,0 a1.5,1.5 0 1 0 -3,0 z" />
+        <path android:fillColor="#FFFFFF" android:fillAlpha="0.75" android:pathData="M58.5,68.8 a1.5,1.5 0 1 0 3,0 a1.5,1.5 0 1 0 -3,0 z" />
+    </group>
+</vector>

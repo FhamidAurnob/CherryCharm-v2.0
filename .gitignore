@@ -1,0 +1,36 @@
+# ── Android / Gradle ──────────────────────────────
+.gradle/
+.kotlin/
+build/
+/captures
+.externalNativeBuild
+.cxx
+*.iml
+*.apk
+*.aab
+local.properties
+
+# ── Android Studio ────────────────────────────────
+.idea/
+.DS_Store
+
+# ── Secrets & per-machine config (never commit) ───
+app/google-services.json
+*.keystore
+*.jks
+.env
+.env.*
+functions/.runtimeconfig.json
+**/serviceAccount*.json
+
+# ── Node (admin dashboard + Cloud Functions) ──────
+node_modules/
+bags-admin/build/
+*.log
+.firebase/
+
+# ── Upgrade leftovers ─────────────────────────────
+backup-before-v2-*.zip
+CherryCharm-v2*.zip
+apply-update.ps1
+apply-patch.ps1

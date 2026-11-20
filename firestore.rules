@@ -1,0 +1,53 @@
+rules_version = '2';
+// CherryCharm security rules — customers touch only their own data; admins (listed in /admins) manage the store.
+service cloud.firestore {
+  match /databases/{db}/documents {
+    function signedIn() { return request.auth != null; }
+    function isOwner(uid) { return signedIn() && request.auth.uid == uid; }
+    function isAdmin() { return signedIn() && exists(/databases/$(db)/documents/admins/$(request.auth.uid)); }
+    function onlyChanges(keys) { return request.resource.data.diff(resource.data).affectedKeys().hasOnly(keys); }
+
+    match /products/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+      // The app updates these counters after an order / review.
+      allow update: if signedIn() && onlyChanges(['stock', 'soldCount', 'rating', 'reviewCount']);
+
+      match /reviews/{uid} {
+        allow read: if true;
+        allow create, update: if isOwner(uid)
+          && request.resource.data.rating >= 1 && request.resource.data.rating <= 5;
+        allow delete: if isOwner(uid) || isAdmin();
+      }
+    }
+
+    match /categories/{id} { allow read: if true; allow write: if isAdmin(); }
+    match /banners/{id}    { allow read: if true; allow write: if isAdmin(); }
+
+    match /promoCodes/{code} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+      allow update: if signedIn() && onlyChanges(['usedCount'])
+        && request.resource.data.usedCount == resource.data.usedCount + 1;
+    }
+
+    match /users/{uid} {
+      allow read, write: if isOwner(uid) || isAdmin();
+      match /{sub=**} { allow read, write: if isOwner(uid) || isAdmin(); }
+    }
+
+    match /carts/{uid}/{rest=**} { allow read, write: if isOwner(uid); }
+
+    match /orders/{id} {
+      allow read: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
+      allow create: if signedIn() && request.resource.data.userId == request.auth.uid;
+      allow update: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid
+        && onlyChanges(['status', 'paymentStatus', 'paymentId', 'paymentMethod', 'updatedAt', 'statusHistory']));
+      allow delete: if isAdmin();
+    }
+
+    match /admins/{uid} { allow read: if isOwner(uid); allow write: if false; }
+    match /notificationHistory/{id} { allow read, write: if isAdmin(); }
+    match /transactions/{id} { allow read, write: if isAdmin(); }
+  }
+}
